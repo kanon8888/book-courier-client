@@ -2,7 +2,7 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import book1 from '../../../assets/book-1.avif'
-import book2 from '../../../assets/book-2.jpg'
+import book2 from '../../../assets/book-8.webp'
 import book3 from '../../../assets/book-3.webp'
 
 const Banner = () => {
