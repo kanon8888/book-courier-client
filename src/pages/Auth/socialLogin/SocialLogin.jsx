@@ -33,7 +33,7 @@ const SocialLogin = () => {
                 console.log(error)
             })
 
-    }
+    };
     return (
         <div className='text-center pb-8'>
             <p className='mb-2'>OR</p>

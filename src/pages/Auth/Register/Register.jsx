@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 
 import axios from 'axios';
 import UseAxiosSecure from '../../../hooks/UseAxiosSecure';
+import SocialLogin from '../socialLogin/SocialLogin';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -103,7 +104,7 @@ const Register = () => {
                 </fieldset>
                 <p>Already have an account<Link state={location.state} className='text-blue-400 underline' to="/login">Login</Link></p>
             </form>
-            
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
