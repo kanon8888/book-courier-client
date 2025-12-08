@@ -9,6 +9,7 @@ import Login from "../pages/Auth/Login/Login";
 import Error from "../components/Error/Error";
 import DashboardLayout from "../layout/DashboardLayout";
 import User from "../layout/User";
+import PrivateRoute from "../Route/PrivaterRoute";
 
 
 export const router = createBrowserRouter([
@@ -49,10 +50,13 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <DashboardLayout />,
+        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
-            { path: 'users', element: <User /> },
-            // এখানে future child routes যেমন: my-orders, my-profile, invoices add করতে পারো
+            {
+                path: 'users',
+                element: <User />
+            },
+
         ]
     }
 ]);

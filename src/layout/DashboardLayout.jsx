@@ -1,74 +1,78 @@
-import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import { FaUsers, FaBook, FaShoppingCart } from 'react-icons/fa';
-
-import useRole from '../hooks/UseRole';
-import useAuth from '../hooks/useAuth';
-
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { FiBook, FiUser, FiCreditCard, FiMenu, FiHome } from "react-icons/fi";
+import { useState } from "react";
 
 const DashboardLayout = () => {
-    const { user } = useAuth();
-    const { role } = useRole();
+    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const navigate = useNavigate();
 
     return (
-        <div className="drawer lg:drawer-open max-w-7xl mx-auto">
-            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+        <div className="flex min-h-screen bg-gray-100 text-gray-900">
 
-            <div className="drawer-content">
-                <nav className="navbar w-full bg-base-300">
-                    <label htmlFor="my-drawer-4" className="btn btn-square btn-ghost">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-                        </svg>
-                    </label>
-                    <div className="px-4 font-bold">Book Dashboard</div>
-                </nav>
+            {/* Sidebar */}
+            <aside className={`bg-white p-6 shadow-md transition-all duration-300 ${sidebarOpen ? "w-64" : "w-16"}`}>
 
-                {/* Main content */}
-                <Outlet />
-            </div>
+                {/* Dashboard / Home Logo */}
+                <div
+                    className={`flex items-center gap-2 mb-6 cursor-pointer`}
+                    onClick={() => navigate("/")} 
+                >
+                    <FiHome size={24} />
+                    {sidebarOpen && <h2 className="text-2xl font-bold">Dashboard</h2>}
+                </div>
 
-            <div className="drawer-side">
-                <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-64 bg-base-200">
+                {/* Sidebar Toggle */}
+                <button
+                    className="text-gray-700 mb-6"
+                    onClick={() => setSidebarOpen(!sidebarOpen)}
+                >
+                    <FiMenu size={24} />
+                </button>
 
-                    {/* User Links */}
+                {/* Navigation Links */}
+                <ul className="space-y-3">
                     <li>
-                        <NavLink to="/dashboard/my-orders">
-                            <FaShoppingCart /> My Orders
+                        <NavLink
+                            to="/dashboard/orders"
+                            className={({ isActive }) =>
+                                `flex items-center gap-2 btn btn-sm w-full justify-start bg-gray-200 hover:bg-gray-300 ${isActive && "bg-gray-300"}`
+                            }
+                        >
+                            <FiBook size={18} />
+                            {sidebarOpen && "My Orders"}
                         </NavLink>
                     </li>
+
                     <li>
-                        <NavLink to="/dashboard/my-profile">
-                            <FaUsers /> My Profile
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/dashboard/invoices">
-                            <FaBook /> Invoices
+                        <NavLink
+                            to="/dashboard/profile"
+                            className={({ isActive }) =>
+                                `flex items-center gap-2 btn btn-sm w-full justify-start bg-gray-200 hover:bg-gray-300 ${isActive && "bg-gray-300"}`
+                            }
+                        >
+                            <FiUser size={18} />
+                            {sidebarOpen && "My Profile"}
                         </NavLink>
                     </li>
 
-                    {/* Librarian Links */}
-                    {role === 'librarian' && <>
-                        <li>
-                            <NavLink to="/dashboard/add-book">
-                                <FaBook /> Add Book
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/dashboard/my-books">
-                                <FaBook /> My Books
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/dashboard/orders">
-                                <FaShoppingCart /> Orders
-                            </NavLink>
-                        </li>
-                    </>}
+                    <li>
+                        <NavLink
+                            to="/dashboard/invoices"
+                            className={({ isActive }) =>
+                                `flex items-center gap-2 btn btn-sm w-full justify-start bg-gray-200 hover:bg-gray-300 ${isActive && "bg-gray-300"}`
+                            }
+                        >
+                            <FiCreditCard size={18} />
+                            {sidebarOpen && "Invoices"}
+                        </NavLink>
+                    </li>
                 </ul>
-            </div>
+            </aside>
+
+            {/* Main Content */}
+            <main className="flex-1 p-8">
+                <Outlet />
+            </main>
         </div>
     );
 };
