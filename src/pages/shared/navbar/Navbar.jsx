@@ -12,15 +12,19 @@ const Navbar = () => {
         logOut().catch(error => console.log(error));
     };
 
-    const links = (
+    const links =
         <>
             <li><NavLink to="/">Home</NavLink></li>
-
-            <li><NavLink to="/dashboard/users">Dashboard</NavLink></li>
-
+            <li><NavLink to="/send-Parcel">Send Parcel</NavLink></li>
             <li><NavLink to="/coverage">Coverage</NavLink></li>
+
+            {
+                user && <>
+                    <li><NavLink to="/dashboard/my-orders">Send Parcel</NavLink></li>
+                </>
+            }
         </>
-    );
+        ;
 
     return (
         <div className="navbar bg-base-100 shadow-sm px-4">
