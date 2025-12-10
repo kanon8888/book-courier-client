@@ -10,6 +10,10 @@ import PrivateRoute from "../Route/PrivaterRoute";
 import SendParcel from "../pages/SendParcel/SendParcel";
 import DashboardLayout from "../layout/DashboardLayout";
 import MyOrders from "../pages/Dashboard/MyOrders/MyOrders";
+import AllBook from "../pages/AllBook/AllBook";
+import BookDetails from "../pages/AllBook/BookDetails";
+import AddBook from "../pages/AllBook/AddBook";
+
 
 
 
@@ -32,6 +36,18 @@ export const router = createBrowserRouter([
                 path: 'send-Parcel',
                 element: <PrivateRoute><SendParcel></SendParcel></PrivateRoute>,
                 loader: () => fetch('/warehouses.json').then(res => res.json())
+            },
+            {
+                path: 'all-Book',
+                Component: AllBook
+            },
+            {
+                path: 'add-Book',
+                element: <AddBook></AddBook>
+            },
+            {
+                path: '/allBook/:id',
+                element: <BookDetails></BookDetails>
             },
             {
                 path: '*',

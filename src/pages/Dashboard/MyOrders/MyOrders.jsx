@@ -2,6 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useAuth from '../../../hooks/useAuth';
 import UseAxiosSecure from '../../../hooks/UseAxiosSecure';
+import { FiEdit } from 'react-icons/fi';
+import { FaTrash } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const MyOrders = () => {
     const { user } = useAuth();
@@ -15,6 +18,30 @@ const MyOrders = () => {
 
         }
     });
+
+    const handleBookDelete = id => {
+        console.log(id);
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                
+                // Swal.fire({
+                //     title: "Deleted!",
+                //     text: "Your file has been deleted.",
+                //     icon: "success"
+                // });
+            }
+        });
+
+    }
 
     return (
         <div>
@@ -39,6 +66,16 @@ const MyOrders = () => {
                                 <td>{book.cost}</td>
                                 <td>Blue</td>
                                 <td>
+                                    <button className="btn btn-square hover:bg-amber-400 mx-2" >
+                                        <FiEdit></FiEdit>
+                                    </button>
+
+                                    <button
+                                        onClick={() => handleBookDelete(book._id)}
+                                        className="btn btn-square hover:bg-amber-400 mx-2">
+                                        <FaTrash />
+                                    </button>
+
 
                                 </td>
                             </tr>)
