@@ -30,6 +30,7 @@ const Register = () => {
                 axios.post(image_API_URL, formData)
                     .then(res => {
                         const photoURL = res.data.data.url;
+                        console.log(photoURL)
 
                         // create user in the database
                         const userInfo = {

@@ -7,6 +7,7 @@ import ThemeToggle from '../../../components/ThemeToggle/ThemeToggle';
 const Navbar = () => {
     const { user, logOut } = useAuth();
     const location = useLocation();
+    console.log(user)
 
     const handleLogOut = () => {
         logOut().catch(error => console.log(error));

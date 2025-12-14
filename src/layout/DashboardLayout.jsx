@@ -5,116 +5,124 @@ import { MdDeliveryDining } from 'react-icons/md';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const DashboardLayout = () => {
-    const [userMenuOpen, setUserMenuOpen, adminMenuOpen, setAdminMenuOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [adminMenuOpen, setAdminMenuOpen] = useState(false);
+  const [librarianMenuOpen, setLibrarianMenuOpen] = useState(false);
 
-    return (
-        <div className="drawer lg:drawer-open max-w-7xl mx-auto">
-            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-                {/* Navbar */}
-                <nav className="navbar w-full bg-base-300">
-                    <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost">
-                        {/* Sidebar toggle icon */}
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">
-                            <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-                            <path d="M9 4v16"></path>
-                            <path d="M14 10l2 2l-2 2"></path>
-                        </svg>
-                    </label>
-                    <div className="px-4">Book Dashboard</div>
-                </nav>
+  return (
+    <div className="drawer lg:drawer-open max-w-7xl mx-auto">
+      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
 
-                {/* Page content here */}
-                <Outlet />
-            </div>
+      {/* MAIN CONTENT */}
+      <div className="drawer-content">
+        <nav className="navbar w-full bg-base-300">
+          <label htmlFor="my-drawer-4" className="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="2" fill="none" stroke="currentColor" className="size-5">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </label>
+          <div className="px-4 font-bold">Book Dashboard</div>
+        </nav>
 
-            <div className="drawer-side is-drawer-close:overflow-visible">
-                <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
-                    <ul className="menu w-full grow">
-                        {/* Homepage */}
-                        <li>
-                            <Link to='/' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">
-                                    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
-                                    <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                </svg>
-                                <span className="is-drawer-close:hidden">Homepage</span>
-                            </Link>
-                        </li>
+        <Outlet />
+      </div>
 
-                        {/* User Dashboard */}
-                        <li>
-                            <button
-                                onClick={() => setUserMenuOpen(!userMenuOpen)}
-                                className="w-full text-left flex justify-between items-center text-2xl text-yellow-400"
-                            >
-                                User <span className='text-2xl text-orange-400'>Dashboard</span>
-                                <span>{userMenuOpen ? '▲' : '▼'}</span>
-                            </button>
-                        </li>
+      {/* SIDEBAR */}
+      <div className="drawer-side">
+        <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
 
-                        {userMenuOpen && (
-                            <>
-                                <li>
-                                    <NavLink
-                                        to="/dashboard/my-orders"
-                                        className="flex items-center gap-2 ml-4 mt-2"
-                                    >
-                                        <MdDeliveryDining /> My Orders
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink
-                                        to="/dashboard/payment-history"
-                                        className="flex items-center gap-2 ml-4 mt-2"
-                                    >
-                                        <FaRegCreditCard /> Payment History
-                                    </NavLink>
-                                </li>
-                                <li>
-                                    <NavLink
-                                        to="/dashboard/my-profile"
-                                        className="flex items-center gap-2 ml-4 mt-2"
-                                    >
-                                        <CgProfile /> My Profile
-                                    </NavLink>
-                                </li>
-                            </>
-                        )}
+        <ul className="menu p-4 w-64 bg-base-200 text-base-content">
 
-                        {/* Admin Dashboard */}
-                        <li>
-                            <button
-                                onClick={() => setAdminMenuOpen(!adminMenuOpen)}
-                                className="w-full text-left flex justify-between items-center text-2xl text-yellow-400"
-                            >
-                                Admin <span className='text-2xl text-orange-400'>Dashboard</span>
-                                <span>{adminMenuOpen ? '▲' : '▼'}</span>
-                            </button>
-                        </li>
+          {/* HOME */}
+          <li>
+            <Link to="/">🏠 Home</Link>
+          </li>
 
+          {/* USER DASHBOARD */}
+          <li>
+            <button
+              onClick={() => setUserMenuOpen(!userMenuOpen)}
+              className="flex justify-between items-center text-yellow-500 text-lg"
+            >
+              User <span className="text-orange-400">Dashboard</span>
+              <span>{userMenuOpen ? '▲' : '▼'}</span>
+            </button>
 
+            {userMenuOpen && (
+              <ul className="ml-4">
+                <li>
+                  <NavLink to="/dashboard/my-orders">
+                    <MdDeliveryDining /> My Orders
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/payment-history">
+                    <FaRegCreditCard /> Payment History
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/my-profile">
+                    <CgProfile /> My Profile
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
 
+          {/* ADMIN DASHBOARD */}
+          <li>
+            <button
+              onClick={() => setAdminMenuOpen(!adminMenuOpen)}
+              className="flex justify-between items-center text-yellow-500 text-lg"
+            >
+              Admin <span className="text-orange-400">Dashboard</span>
+              <span>{adminMenuOpen ? '▲' : '▼'}</span>
+            </button>
 
+            {adminMenuOpen && (
+              <ul className="ml-4">
+                <li>
+                  <NavLink to="/dashboard/admin/all-users">All Users</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/admin/manage-books">Manage Books</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/admin/profile">My Profile</NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
 
-                        {/* Settings */}
-                        <li>
-                            <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">
-                                    <path d="M20 7h-9"></path>
-                                    <path d="M14 17H5"></path>
-                                    <circle cx="17" cy="17" r="3"></circle>
-                                    <circle cx="7" cy="7" r="3"></circle>
-                                </svg>
-                                <span className="is-drawer-close:hidden">Settings</span>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    );
+          {/* LIBRARIAN DASHBOARD */}
+          <li>
+            <button
+              onClick={() => setLibrarianMenuOpen(!librarianMenuOpen)}
+              className="flex justify-between items-center text-yellow-500 text-lg"
+            >
+              Librarian <span className="text-orange-400">Dashboard</span>
+              <span>{librarianMenuOpen ? '▲' : '▼'}</span>
+            </button>
+
+            {librarianMenuOpen && (
+              <ul className="ml-4">
+                <li>
+                  <NavLink to="/dashboard/librarian/add-book">Add Book</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/librarian/my-books">My Books</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/librarian/orders">Orders</NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  );
 };
 
 export default DashboardLayout;
