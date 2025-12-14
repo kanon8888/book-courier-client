@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const BookDetails = () => {
@@ -7,10 +8,10 @@ const BookDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  
+
   const [book, setBook] = useState(location.state?.book || null);
 
- 
+
   useEffect(() => {
     if (!book) {
       fetch(`http://localhost:3000/allBook/${id}`)
@@ -50,7 +51,10 @@ const BookDetails = () => {
           Price: ${book.price}
         </h2>
 
-        <button className="btn btn-primary">Buy Now</button>
+
+        <Link to={`/send-book/${book._id}`}>
+          <button className="btn btn-primary">Buy Now</button>
+        </Link>
         <button onClick={() => navigate(-1)} className="btn btn-outline ml-4">
           Back
         </button>

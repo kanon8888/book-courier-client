@@ -7,12 +7,18 @@ import Register from "../pages/Auth/Register/Register";
 import Login from "../pages/Auth/Login/Login";
 import Error from "../components/Error/Error";
 import PrivateRoute from "../Route/PrivaterRoute";
-import SendParcel from "../pages/SendParcel/SendParcel";
+// import SendParcel from "../pages/SendParcel/SendParcel";
 import DashboardLayout from "../layout/DashboardLayout";
 import MyOrders from "../pages/Dashboard/MyOrders/MyOrders";
 import AllBook from "../pages/AllBook/AllBook";
 import BookDetails from "../pages/AllBook/BookDetails";
 import AddBook from "../pages/AllBook/AddBook";
+import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
+import SendBook from "../pages/SendBook/SendBook";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import PaymentSuccess from "../pages/Dashboard/Payment/paymentSuccess";
+import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 
 
 
@@ -32,9 +38,14 @@ export const router = createBrowserRouter([
                 Component: Coverage,
                 loader: () => fetch('/warehouses.json').then(res => res.json())
             },
+            // {
+            //     path: 'send-Parcel',
+            //     element: <PrivateRoute><SendParcel></SendParcel></PrivateRoute>,
+            //     loader: () => fetch('/warehouses.json').then(res => res.json())
+            // },
             {
-                path: 'send-Parcel',
-                element: <PrivateRoute><SendParcel></SendParcel></PrivateRoute>,
+                path: 'send-book/:id',
+                element: <PrivateRoute><SendBook></SendBook></PrivateRoute>,
                 loader: () => fetch('/warehouses.json').then(res => res.json())
             },
             {
@@ -46,7 +57,7 @@ export const router = createBrowserRouter([
                 element: <AddBook></AddBook>
             },
             {
-                path: '/allBook/:id',
+                path: 'allBook/:id',
                 element: <BookDetails></BookDetails>
             },
             {
@@ -78,7 +89,29 @@ export const router = createBrowserRouter([
                 path: 'my-orders',
                 Component: MyOrders
 
+            },
+            {
+                path: 'my-profile',
+                Component: MyProfile
+            },
+            {
+                path: 'payment/:bookId',
+                Component: Payment
+
+            },
+            {
+                path: 'payment-history',
+                Component: PaymentHistory
+            },
+            {
+                path: 'payment-success',
+                Component: PaymentSuccess
+            },
+            {
+                path: 'payment-cancelled',
+                Component: PaymentCancelled
             }
+            
         ]
     }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 export default function AllBook() {
   const [books, setBooks] = useState([]);
@@ -20,7 +20,7 @@ export default function AllBook() {
             key={book._id}
             className="card bg-base-100 shadow-md rounded-xl overflow-hidden flex flex-col"
           >
-           
+
             {book.image ? (
               <figure className="w-full h-48 overflow-hidden">
                 <img
@@ -35,7 +35,7 @@ export default function AllBook() {
               </div>
             )}
 
-           
+
             <div className="card-body p-4 flex-1 flex flex-col">
               <div>
                 <h2 className="text-lg font-semibold line-clamp-2">{book.title}</h2>
@@ -54,9 +54,9 @@ export default function AllBook() {
                 <p className="text-sm font-medium">${book.price}</p>
               </div>
 
-             
+
               <div className="card-actions mt-4 flex gap-2">
-                
+
                 <Link
                   to={`/allBook/${book._id}`}
                   className="btn btn-outline btn-sm w-1/2"
@@ -64,7 +64,11 @@ export default function AllBook() {
                   View
                 </Link>
 
-                <button className="btn btn-primary btn-sm w-1/2">Buy</button>
+                <Link
+                to={`send-book`}
+                  className="btn btn-primary btn-sm w-1/2">
+                  Buy
+                </Link>
               </div>
             </div>
           </article>

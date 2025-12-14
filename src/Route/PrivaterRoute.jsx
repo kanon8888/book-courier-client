@@ -9,7 +9,9 @@ const PrivateRoute = ({ children }) => {
 
 
     if (loading) {
-        return <Loading></Loading>
+        return <div>
+            <span className='loading loading-infinity loading-xl'></span>
+        </div>
     }
 
     if (!user) {

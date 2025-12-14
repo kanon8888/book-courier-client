@@ -5,12 +5,13 @@ import UseAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { FiEdit } from 'react-icons/fi';
 import { FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
 
 const MyOrders = () => {
     const { user } = useAuth();
     const axiosSecure = UseAxiosSecure();
 
-    const { data: books = [] } = useQuery({
+    const { data: books = [], refetch } = useQuery({
         queryKey: ['myOrders', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/books?email${user.email}`);
@@ -32,15 +33,37 @@ const MyOrders = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                
-                // Swal.fire({
-                //     title: "Deleted!",
-                //     text: "Your file has been deleted.",
-                //     icon: "success"
-                // });
+                axiosSecure.delete(`/books/${id}`)
+                    .then(res => {
+                        console.log(res.data);
+
+                        if (res.data.deletedCount) {
+                            // refresh the data in the ui
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your book request has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+
+
             }
         });
 
+    }
+
+    const handlePayment = async (book) => {
+        const paymentInfo = {
+            cost: book.cost,
+            bookId: book._id,
+            senderEmail: book.senderEmail,
+            bookName: book.bookName
+        }
+        const res = await axiosSecure.post('/payment-checkout-session', paymentInfo);
+        console.log(res.data.url);
+        window.location.assign(res.data.url);
     }
 
     return (
@@ -54,7 +77,8 @@ const MyOrders = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Cost</th>
-                            <th>Payment Status</th>
+                            <th>Payment</th>
+                            <th>Booking Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -64,7 +88,17 @@ const MyOrders = () => {
                                 <th>{index + 1}</th>
                                 <td>{book.bookName}</td>
                                 <td>{book.cost}</td>
-                                <td>Blue</td>
+                                <td>
+                                    {
+                                        book.paymentStatus === 'paid' ? <span className='text-green-400'>Paid</span> :
+                                            <button
+                                                onClick={() => handlePayment(book)}
+                                                className='btn  btn-sm btn-primary text-black'>
+                                                Pay
+                                            </button>
+                                    }
+                                </td>
+                                <td>{book.bookingStatus}</td>
                                 <td>
                                     <button className="btn btn-square hover:bg-amber-400 mx-2" >
                                         <FiEdit></FiEdit>

@@ -16,12 +16,12 @@ const Navbar = () => {
         <>
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/all-Book">All Book</NavLink></li>
-            <li><NavLink to="/send-Parcel">Send Parcel</NavLink></li>
+            {/* <li><NavLink to="/send-Parcel">Send Parcel</NavLink></li> */}
             <li><NavLink to="/coverage">Coverage</NavLink></li>
 
             {
                 user && <>
-                    <li><NavLink to="/dashboard/my-orders">Send Parcel</NavLink></li>
+                    <li><NavLink to="/dashboard/my-orders">Dashboard</NavLink></li>
                 </>
             }
         </>
