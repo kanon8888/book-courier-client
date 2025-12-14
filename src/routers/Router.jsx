@@ -22,6 +22,9 @@ import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers";
 import ManageBooks from "../pages/Dashboard/Admin/ManageBooks";
 import MyProfilel from "../pages/Dashboard/Admin/MyProfilel";
+import AddBooks from "../pages/Dashboard/Librarian/AddBooks";
+import MyBooks from "../pages/Dashboard/Librarian/MyBooks";
+import Orderss from "../pages/Dashboard/Librarian/Orderss";
 
 
 
@@ -125,6 +128,18 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/admin/profile',
                 Component: MyProfilel
+            },
+            {
+                path: '/dashboard/librarian/add-books',
+                Component: AddBooks
+            },
+            {
+                path: '/dashboard/librarian/my-books',
+                Component: MyBooks
+            },
+            {
+                path: '/dashboard/librarian/orderss',
+                Component: Orderss
             }
 
         ]
