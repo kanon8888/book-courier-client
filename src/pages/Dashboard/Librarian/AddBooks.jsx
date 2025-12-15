@@ -26,7 +26,9 @@ const AddBooks = () => {
     try {
       setLoading(true);
 
-      // 1️⃣ Upload image to imgbb
+      /* ======================
+         1️⃣ Upload image to imgbb
+      ======================= */
       const imageData = new FormData();
       imageData.append("image", imageFile);
 
@@ -35,25 +37,42 @@ const AddBooks = () => {
         imageData
       );
 
+      if (!imgRes.data.success) {
+        throw new Error("Image upload failed");
+      }
+
       const image = imgRes.data.data.url;
 
-      // 2️⃣ Save book to DB
+      /* ======================
+         2️⃣ Save book to backend
+      ======================= */
       const book = {
         title,
         author,
-        price,
+        price: Number(price),
         category,
         image,
       };
 
-      await axiosSecure.post("/books", book);
+      const res = await axiosSecure.post("/books", book);
 
-      Swal.fire("Success!", "Book added successfully", "success");
-      form.reset();
-      setImageFile(null);
+      if (res.data?.insertedId) {
+        Swal.fire("Success!", "Book added successfully", "success");
+        form.reset();
+        setImageFile(null);
+      } else {
+        throw new Error("Book not saved in database");
+      }
     } catch (error) {
-      console.error(error);
-      Swal.fire("Error!", "Failed to add book", "error");
+      console.error("FULL ERROR 👉", error.response || error);
+
+      Swal.fire(
+        "Error!",
+        error.response?.data?.message ||
+        error.message ||
+        "Failed to add book",
+        "error"
+      );
     } finally {
       setLoading(false);
     }
@@ -93,7 +112,7 @@ const AddBooks = () => {
           required
         />
 
-        {/* FILE INPUT */}
+        {/* IMAGE INPUT */}
         <input
           type="file"
           accept="image/*"
