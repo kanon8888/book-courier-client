@@ -11,7 +11,7 @@ const AllUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axiosSecure.get("/users"); 
+        const res = await axiosSecure.get("/users");
         setUsers(res.data);
       } catch (err) {
         console.error("Error fetching users:", err);
@@ -45,29 +45,32 @@ const AllUsers = () => {
     });
   };
 
-  // MAKE ADMIN
-  const handleMakeAdmin = async (id) => {
+  // MAKE LIBRARIAN
+  const handleMakeLibrarian = async (id) => {
     Swal.fire({
-      title: "Make Admin?",
-      text: "এই ব্যবহারকারীকে admin করা হবে।",
+      title: "Make Librarian?",
+      text: "এই ব্যবহারকারীকে librarian করা হবে।",
       icon: "question",
       showCancelButton: true,
       confirmButtonText: "Yes",
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axiosSecure.patch(`/users/admin/${id}`);
-          setUsers(users.map(user => 
-            user._id === id ? { ...user, role: "admin" } : user
+          await axiosSecure.patch(`/users/librarian/${id}`);
+
+          setUsers(users.map(user =>
+            user._id === id ? { ...user, role: "librarian" } : user
           ));
-          Swal.fire("Success!", "User is now an Admin.", "success");
+
+          Swal.fire("Success!", "User is now a Librarian.", "success");
         } catch (error) {
           console.error(error);
-          Swal.fire("Error!", "Could not make admin.", "error");
+          Swal.fire("Error!", "Could not make librarian.", "error");
         }
       }
     });
   };
+
 
   if (loading) return <p>Loading users...</p>;
   if (!users.length) return <p>No users found.</p>;
@@ -93,16 +96,16 @@ const AllUsers = () => {
               <td>{user.email}</td>
               <td className="capitalize">{user.role}</td>
               <td className="flex gap-2">
-                {user.role !== "admin" && (
-                  <button 
-                    onClick={() => handleMakeAdmin(user._id)} 
+                {user.role !== "librarian" && (
+                  <button
+                    onClick={() => handleMakeLibrarian(user._id)}
                     className="btn btn-sm btn-success"
                   >
-                    Make Admin
+                    Make Librarian
                   </button>
                 )}
-                <button 
-                  onClick={() => handleDelete(user._id)} 
+                <button
+                  onClick={() => handleDelete(user._id)}
                   className="btn btn-sm btn-error"
                 >
                   Delete

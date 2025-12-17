@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
-import { FaRegCreditCard } from 'react-icons/fa';
-import { MdDeliveryDining } from 'react-icons/md';
+import { FaRegCreditCard, FaUserShield } from 'react-icons/fa';
+import { MdBookmarkBorder, MdDeliveryDining } from 'react-icons/md';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import { FaBookSkull } from 'react-icons/fa6';
+import { ImProfile } from 'react-icons/im';
+import { SiBookstack } from 'react-icons/si';
+import { IoBookSharp } from 'react-icons/io5';
 
 const DashboardLayout = () => {
     const { user } = useAuth();
@@ -93,13 +97,19 @@ const DashboardLayout = () => {
                             {adminMenuOpen && (
                                 <ul className="ml-4">
                                     <li>
-                                        <NavLink to="/dashboard/admin/all-users">All Users</NavLink>
+                                        <NavLink className="hover:text-fuchsia-400" to="/dashboard/admin/all-users">
+                                            <FaUserShield />
+                                            All Users</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/dashboard/admin/manage-books">Manage Books</NavLink>
+                                        <NavLink className="hover:text-fuchsia-400" to="/dashboard/admin/manage-books">
+                                            <FaBookSkull />
+                                            Manage Books</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/dashboard/admin/profile">My Profile</NavLink>
+                                        <NavLink className="hover:text-fuchsia-400" to="/dashboard/admin/profile">
+                                            <ImProfile />
+                                            My Profile</NavLink>
                                     </li>
                                 </ul>
                             )}
@@ -119,13 +129,19 @@ const DashboardLayout = () => {
                         {librarianMenuOpen && (
                             <ul className="ml-4">
                                 <li>
-                                    <NavLink to="/dashboard/librarian/add-books">Add Books</NavLink>
+                                    <NavLink className="hover:text-red-400" to="/dashboard/librarian/add-books">
+                                        <SiBookstack />
+                                        Add Books</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/librarian/my-books">My Books</NavLink>
+                                    <NavLink className="hover:text-red-400" to="/dashboard/librarian/my-books">
+                                        <IoBookSharp />
+                                        My Books</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/librarian/orderss">Orderss</NavLink>
+                                    <NavLink className="hover:text-red-400" to="/dashboard/librarian/orderss">
+                                        <MdBookmarkBorder />
+                                        Orderss</NavLink>
                                 </li>
                             </ul>
                         )}

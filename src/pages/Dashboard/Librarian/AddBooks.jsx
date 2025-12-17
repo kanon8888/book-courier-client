@@ -1,132 +1,115 @@
 import React, { useState } from "react";
-import Swal from "sweetalert2";
-import UseAxiosSecure from "../../../hooks/UseAxiosSecure";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const AddBooks = () => {
-  const axiosSecure = UseAxiosSecure();
-  const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
+const AddBook = () => {
+  const navigate = useNavigate();
 
-  const [loading, setLoading] = useState(false);
-  const [imageFile, setImageFile] = useState(null);
+  const [bookData, setBookData] = useState({
+    name: "",
+    author: "",
+    price: "",
+    status: "published",
+    image: null,
+  });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
 
-    const form = e.target;
-    const title = form.title.value;
-    const author = form.author.value;
-    const price = form.price.value;
-    const category = form.category.value;
-
-    if (!imageFile) {
-      return Swal.fire("Error", "Please select an image", "error");
-    }
-
-    try {
-      setLoading(true);
-
-      /* ======================
-         1️⃣ Upload image to imgbb
-      ======================= */
-      const imageData = new FormData();
-      imageData.append("image", imageFile);
-
-      const imgRes = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
-        imageData
-      );
-
-      if (!imgRes.data.success) {
-        throw new Error("Image upload failed");
-      }
-
-      const image = imgRes.data.data.url;
-
-      /* ======================
-         2️⃣ Save book to backend
-      ======================= */
-      const book = {
-        title,
-        author,
-        price: Number(price),
-        category,
-        image,
-      };
-
-      const res = await axiosSecure.post("/books", book);
-
-      if (res.data?.insertedId) {
-        Swal.fire("Success!", "Book added successfully", "success");
-        form.reset();
-        setImageFile(null);
-      } else {
-        throw new Error("Book not saved in database");
-      }
-    } catch (error) {
-      console.error("FULL ERROR 👉", error.response || error);
-
-      Swal.fire(
-        "Error!",
-        error.response?.data?.message ||
-        error.message ||
-        "Failed to add book",
-        "error"
-      );
-    } finally {
-      setLoading(false);
+    if (name === "image") {
+      setBookData({ ...bookData, image: files[0] });
+    } else {
+      setBookData({ ...bookData, [name]: value });
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    
+    const oldBooks = JSON.parse(localStorage.getItem("myBooks")) || [];
+
+    
+    const newBook = {
+      id: Date.now(),
+      name: bookData.name,
+      author: bookData.author,
+      price: bookData.price,
+      status: bookData.status,
+      image: URL.createObjectURL(bookData.image),
+    };
+
+    
+    oldBooks.push(newBook);
+
+   
+    localStorage.setItem("myBooks", JSON.stringify(oldBooks));
+
+    
+    navigate("/dashboard/librarian/my-books");
+  };
+
   return (
-    <div className="p-6 max-w-xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Add New Book</h2>
+    <div className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-4 text-gray-800">Add New Book</h2>
 
-      <form onSubmit={handleSubmit} className="space-y-3">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
-          name="title"
-          className="input input-bordered w-full"
-          placeholder="Book Title"
+          type="text"
+          name="name"
+          placeholder="Book Name"
+          value={bookData.name}
+          onChange={handleChange}
+          className="p-2 border rounded"
           required
         />
 
         <input
+          type="text"
           name="author"
-          className="input input-bordered w-full"
           placeholder="Author Name"
+          value={bookData.author}
+          onChange={handleChange}
+          className="p-2 border rounded"
           required
         />
 
         <input
-          name="price"
           type="number"
-          className="input input-bordered w-full"
+          name="price"
           placeholder="Price"
+          value={bookData.price}
+          onChange={handleChange}
+          className="p-2 border rounded"
           required
         />
 
-        <input
-          name="category"
-          className="input input-bordered w-full"
-          placeholder="Category"
-          required
-        />
+        <select
+          name="status"
+          value={bookData.status}
+          onChange={handleChange}
+          className="p-2 border rounded"
+        >
+          <option value="published">Published</option>
+          <option value="unpublished">Unpublished</option>
+        </select>
 
-        {/* IMAGE INPUT */}
         <input
           type="file"
-          accept="image/*"
-          className="file-input file-input-bordered w-full"
-          onChange={(e) => setImageFile(e.target.files[0])}
+          name="image"
+          onChange={handleChange}
+          className="p-2 border rounded"
           required
         />
 
-        <button disabled={loading} className="btn btn-success w-full">
-          {loading ? "Uploading..." : "Add Book"}
+        <button
+          type="submit"
+          className="bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+        >
+          Add Book
         </button>
       </form>
     </div>
   );
 };
 
-export default AddBooks;
+export default AddBook;

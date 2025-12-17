@@ -15,21 +15,21 @@ const Navbar = () => {
 
     const links =
         <>
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/all-Book">All Book</NavLink></li>
+            <li><NavLink className="text-green-400" to="/">Home</NavLink></li>
+            <li><NavLink className="text-green-500" to="/all-Book">All Book</NavLink></li>
             {/* <li><NavLink to="/send-Parcel">Send Parcel</NavLink></li> */}
-            <li><NavLink to="/coverage">Coverage</NavLink></li>
+            <li><NavLink className="text-green-500" to="/coverage">Coverage</NavLink></li>
 
             {
                 user && <>
-                    <li><NavLink to="/dashboard/my-orders">Dashboard</NavLink></li>
+                    <li><NavLink className="text-shadow-red-500" to="/dashboard/my-orders">Dashboard</NavLink></li>
                 </>
             }
         </>
         ;
 
     return (
-        <div className="navbar bg-base-100 shadow-sm px-4">
+        <div className="navbar shadow-sm px-4 bg-indigo-400">
 
             {/* Left Section */}
             <div className="navbar-start">
@@ -63,7 +63,7 @@ const Navbar = () => {
             {/* Right Section */}
             <div className="navbar-end flex items-center gap-4">
 
-                {/* ⭐ Theme Toggle */}
+                {/* Theme Toggle */}
                 <ThemeToggle />
 
                 {user ? (

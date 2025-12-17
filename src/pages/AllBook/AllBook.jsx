@@ -12,7 +12,7 @@ export default function AllBook() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-semibold mb-6">All Books</h1>
+      <h1 className="font-semibold mb-6 text-center text-fuchsia-600 text-3xl">All Books</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {books.map((book) => (
