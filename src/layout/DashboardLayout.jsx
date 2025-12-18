@@ -60,9 +60,9 @@ const DashboardLayout = () => {
                     <li>
                         <button
                             onClick={() => setUserMenuOpen(!userMenuOpen)}
-                            className="flex justify-between items-center text-yellow-500 text-lg"
+                            className="flex justify-between items-center text-emerald-300 text-lg"
                         >
-                            User <span className="text-orange-400">Dashboard</span>
+                            User<span className="text-indigo-300">Dashboard</span>
                             <span>{userMenuOpen ? '▲' : '▼'}</span>
                         </button>
 
@@ -120,9 +120,9 @@ const DashboardLayout = () => {
                     <li>
                         <button
                             onClick={() => setLibrarianMenuOpen(!librarianMenuOpen)}
-                            className="flex justify-between items-center text-yellow-500 text-lg"
+                            className="flex justify-between items-center text-fuchsia-400 text-lg"
                         >
-                            Librarian <span className="text-orange-400">Dashboard</span>
+                            Librarian <span className="text-emerald-400">Dashboard</span>
                             <span>{librarianMenuOpen ? '▲' : '▼'}</span>
                         </button>
 

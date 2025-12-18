@@ -31,8 +31,8 @@ const MyProfile = () => {
     };
 
     return (
-        <div className="max-w-xl mx-auto p-6 bg-white shadow rounded-lg">
-            <h2 className="text-2xl font-bold mb-4">My Profile</h2>
+        <div className="max-w-xl mx-auto p-6 shadow rounded-lg bg-fuchsia-200">
+            <h2 className="text-2xl font-bold mb-4 text-fuchsia-200">My Profile</h2>
 
             <img
                 src={profile.photo}

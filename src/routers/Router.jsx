@@ -25,6 +25,7 @@ import MyProfilel from "../pages/Dashboard/Admin/MyProfilel";
 import AddBooks from "../pages/Dashboard/Librarian/AddBooks";
 import MyBooks from "../pages/Dashboard/Librarian/MyBooks";
 import Orderss from "../pages/Dashboard/Librarian/Orderss";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 
 
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: 'about-us',
+                Component: AboutUs
             },
 
             {
@@ -54,6 +59,7 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute><SendBook></SendBook></PrivateRoute>,
                 loader: () => fetch('/warehouses.json').then(res => res.json())
             },
+
             {
                 path: 'all-Book',
                 Component: AllBook

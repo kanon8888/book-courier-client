@@ -67,8 +67,8 @@ const MyOrders = () => {
     }
 
     return (
-        <div>
-            <h2>All of my orders : {books.length}</h2>
+        <div className=''>
+            <h2 className='text-center text-4xl text-emerald-400'>All of my orders : {books.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
