@@ -14,7 +14,7 @@ const BookDetails = () => {
 
   useEffect(() => {
     if (!book) {
-      fetch(`http://localhost:3000/allBook/${id}`)
+      fetch(`https://book-courier-server-bay.vercel.app/allBook/${id}`)
         .then((res) => res.json())
         .then((data) => setBook(data))
         .catch((err) => console.log(err));

@@ -5,7 +5,7 @@ export default function AllBook() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/allbook`)
+    fetch(`https://book-courier-server-bay.vercel.app/allbook`)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);

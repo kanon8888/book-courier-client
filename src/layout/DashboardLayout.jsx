@@ -19,7 +19,7 @@ const DashboardLayout = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/users/${user.email}/role`)
+            fetch(`https://book-courier-server-bay.vercel.app/users/${user.email}/role`)
                 .then(res => res.json())
                 .then(data => setRole(data.role))
                 .catch(err => console.error(err));

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://book-courier-server-bay.vercel.app/'
 });
 
 const UseAxiosSecure = () => {
@@ -43,25 +43,3 @@ const UseAxiosSecure = () => {
 
 export default UseAxiosSecure;
 
-/**
- * const { user, logOut } = useAuth();
-    const navigate = useNavigate();
-
-    axiosSecure.interceptors.request.use(config => {
-        if(user?.accessToken){
-            config.headers.Authorization = `Bearer ${user.accessToken}`;
-        }
-        return config;
-    });
-
-    axiosSecure.interceptors.response.use(
-        res => res,
-        async err => {
-            if(err.response?.status === 401 || err.response?.status === 403){
-                await logOut();
-                navigate('/login');
-            }
-            return Promise.reject(err);
-        }
-    );
- */
