@@ -1,16 +1,56 @@
-# React + Vite
+# 📚 Book Courier – Client Side
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🔗 Live Website
+https://your-client-live-site-url.com  
+*(Replace with your Netlify / Vercel live URL)*
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Project Purpose
+Book Courier (Client Side) is a frontend web application where users can browse books, place orders, and manage their book-related activities. Librarians can view and manage orders through a clean and user-friendly interface.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Key Features
 
-## Expanding the ESLint configuration
+### 👤 User Features
+- Home page with smooth scroll animations
+- Latest 6 books section
+- All books listing page
+- My Books page (localStorage based)
+- Order books easily
+- Orders page with order status
+- Cancel pending orders
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🧑‍🏫 Librarian Features (UI)
+- View all orders in a table
+- Update order status:
+  - Pending → Shipped → Delivered
+- Cancel pending orders
+
+### 🎨 UI & UX
+- Fully responsive design
+- Built with Tailwind CSS and DaisyUI
+- SweetAlert2 for alerts and confirmations
+- Smooth navigation using React Router
+
+---
+
+## 🧰 Technologies Used
+
+### Frontend
+- React
+- React Router DOM
+- Tailwind CSS
+- DaisyUI
+- SweetAlert2
+
+---
+
+## 📦 NPM Packages Used
+```bash
+react
+react-router-dom
+sweetalert2
+tailwindcss
+daisyui
