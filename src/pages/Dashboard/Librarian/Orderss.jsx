@@ -109,10 +109,14 @@ const OrdersPage = () => {
                     {order.status === "pending" ? (
                       <button
                         onClick={() => handleCancel(order.orderId)}
-                        className="btn btn-error btn-sm"
+                        className="relative inline-flex items-center justify-center px-4 py-2 btn-sm overflow-hidden font-medium transition-all bg-red-500 rounded-lg shadow text-white group hover:bg-red-600 hover:shadow-lg"
                       >
-                        Cancel
+                        <span className="w-24 h-24 rounded rotate-[-40deg] bg-red-700 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-4 ml-4 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-16 group-hover:translate-x-0"></span>
+                        <span className="relative text-white transition-colors duration-300 text-sm">
+                          Cancel
+                        </span>
                       </button>
+
                     ) : (
                       <span className="text-green-600 font-semibold">
                         Completed

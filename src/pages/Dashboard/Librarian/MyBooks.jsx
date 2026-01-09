@@ -61,10 +61,14 @@ const MyBooks = () => {
               {/* Order Button */}
               <button
                 onClick={() => handleOrder(book)}
-                className="mt-3 w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+                className="relative inline-flex items-center justify-center w-full px-4 py-2 overflow-hidden font-medium transition-all bg-green-500 rounded-lg shadow text-white group hover:bg-green-600 hover:shadow-lg"
               >
-                Order This Book
+                <span className="w-28 h-28 rounded rotate-[-40deg] bg-green-700 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-6 ml-6 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-20 group-hover:translate-x-0"></span>
+                <span className="relative text-white transition-colors duration-300 text-sm">
+                  Order This Book
+                </span>
               </button>
+
             </div>
           ))}
         </div>

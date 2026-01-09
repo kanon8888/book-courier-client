@@ -92,9 +92,16 @@ const AddBook = () => {
                     required
                 ></textarea>
 
-                <button type="submit" className="btn btn-primary w-full">
-                    Add Book
+                <button
+                    type="submit"
+                    className="relative inline-flex items-center justify-center w-full px-4 py-2 overflow-hidden font-medium transition-all bg-indigo-600 rounded-lg shadow text-white group hover:shadow-lg"
+                >
+                    <span className="w-28 h-28 rounded rotate-[-40deg] bg-indigo-800 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-6 ml-6 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-20 group-hover:translate-x-0"></span>
+                    <span className="relative text-white transition-colors duration-300 text-sm">
+                        Add Book
+                    </span>
                 </button>
+
             </form>
         </div>
     );
