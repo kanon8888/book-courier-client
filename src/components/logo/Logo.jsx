@@ -11,11 +11,12 @@ const Logo = () => {
                 alt="Book Courier Logo"
             />
             <h2 className='text-3xl font-bold tracking-wide'>
-                <span className='text-4xl text-orange-400'>Book</span>
-                <span className='text-4xl text-yellow-400'>Courier</span>
+                <span className='text-1xl text-orange-400'>Book</span>
+                <span className='text-1xl text-yellow-400'>Courier</span>
             </h2>
         </Link>
     );
 };
 
 export default Logo;
+

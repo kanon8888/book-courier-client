@@ -15,17 +15,80 @@ const Navbar = () => {
 
     const links =
         <>
-            <li><NavLink className="text-green-400" to="/">Home</NavLink></li>
-            <li><NavLink className="text-green-500" to="/all-Book">All Book</NavLink></li>
-            <li><NavLink className="text-green-500" to="/about-us">About Us</NavLink></li>
-            {/* <li><NavLink to="/send-Parcel">Send Parcel</NavLink></li> */}
-            <li><NavLink className="text-green-500" to="/coverage">Coverage</NavLink></li>
+            <ul className="flex items-center gap-4">
+                <li>
+                    <NavLink
+                        to="/"
+                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-white rounded group"
+                    >
+                        <span className="w-36 h-36 rounded rotate-[-40deg] bg-green-500 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-7 ml-7 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-24 group-hover:translate-x-0"></span>
+                        <span className="relative text-black transition-colors duration-300 group-hover:text-white">
+                            Home
+                        </span>
+                    </NavLink>
+                </li>
 
-            {
-                user && <>
-                    <li><NavLink className="text-shadow-red-500" to="/dashboard/my-orders">Dashboard</NavLink></li>
-                </>
-            }
+                <li>
+                    <NavLink
+                        to="/all-Book"
+                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-white rounded group"
+                    >
+                        <span className="w-36 h-36 rounded rotate-[-40deg] bg-green-500 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-7 ml-7 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-24 group-hover:translate-x-0"></span>
+                        <span className="relative text-black transition-colors duration-300 group-hover:text-white">
+                            All Book
+                        </span>
+                    </NavLink>
+                </li>
+
+                <li>
+                    <NavLink
+                        to="/about-us"
+                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-white rounded group"
+                    >
+                        <span className="w-36 h-36 rounded rotate-[-40deg] bg-green-500 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-7 ml-7 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-24 group-hover:translate-x-0"></span>
+                        <span className="relative text-black transition-colors duration-300 group-hover:text-white">
+                            About Us
+                        </span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="/coverage"
+                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-white rounded group"
+                    >
+                        <span className="w-36 h-36 rounded rotate-[-40deg] bg-green-500 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-7 ml-7 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-24 group-hover:translate-x-0"></span>
+
+                        <span className="relative text-black transition-colors duration-300 group-hover:text-white">
+                            Coverage
+                        </span>
+                    </NavLink>
+                </li>
+
+
+                {
+                    user && <>
+                        <li>
+                            <NavLink
+                                to="/dashboard/my-orders"
+                                className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-white rounded group"
+                            >
+                                <span className="w-36 h-36 rounded rotate-[-40deg] bg-red-500 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-7 ml-7 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-24 group-hover:translate-x-0"></span>
+
+                                <span className="relative text-black transition-colors duration-300 group-hover:text-white">
+                                    Dashboard
+                                </span>
+                            </NavLink>
+                        </li>
+
+                    </>
+                }
+            </ul>
+
+
+
+
+
+
         </>
         ;
 

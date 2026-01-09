@@ -93,9 +93,15 @@ const MyOrders = () => {
                                         book.paymentStatus === 'paid' ? <span className='text-green-400'>Paid</span> :
                                             <button
                                                 onClick={() => handlePayment(book)}
-                                                className='btn  btn-sm btn-primary text-black'>
-                                                Pay
+                                                className="relative inline-flex items-center justify-center px-4 py-2 overflow-hidden font-medium transition-all bg-blue-600 rounded-lg shadow text-white group hover:shadow-lg"
+                                            >
+                                                <span className="w-24 h-24 rounded rotate-[-40deg] bg-blue-800 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-4 ml-4 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-16 group-hover:translate-x-0"></span>
+                                                <span className="relative text-white transition-colors duration-300 text-sm">
+                                                    Pay
+                                                </span>
                                             </button>
+
+
                                     }
                                 </td>
                                 <td>{book.bookingStatus}</td>
