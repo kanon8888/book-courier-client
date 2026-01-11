@@ -10,10 +10,10 @@ const Logo = () => {
                 src={logo}
                 alt="Book Courier Logo"
             />
-            <h2 className='text-3xl font-bold tracking-wide'>
+            {/* <h2 className='text-3xl font-bold tracking-wide'>
                 <span className='text-1xl text-orange-400'>Book</span>
                 <span className='text-1xl text-yellow-400'>Courier</span>
-            </h2>
+            </h2> */}
         </Link>
     );
 };

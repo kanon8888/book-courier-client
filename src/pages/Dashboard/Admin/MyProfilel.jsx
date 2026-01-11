@@ -24,7 +24,7 @@ const MyProfilel = () => {
 
     return (
         <div className="max-w-xl mx-auto p-6 bg-base-100 shadow rounded">
-            <h2 className="text-2xl font-bold mb-6">My Profile</h2>
+            <h2 className="text-2xl text-center font-bold mb-6">My Profile</h2>
 
             <div className="flex flex-col items-center mb-6">
                 <img

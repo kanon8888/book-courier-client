@@ -50,7 +50,7 @@ const AddBook = () => {
 
   return (
     <div className="max-w-xl mx-auto p-6 rounded-lg shadow-md bg-indigo-300 text-white">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">Add New Book</h2>
+      <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">Add New Book</h2>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input

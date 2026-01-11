@@ -19,7 +19,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to="/"
-                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-white rounded group"
+                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all rounded group"
                     >
                         <span className="w-36 h-36 rounded rotate-[-40deg] bg-green-500 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-7 ml-7 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-24 group-hover:translate-x-0"></span>
                         <span className="relative text-black transition-colors duration-300 group-hover:text-white">
@@ -31,7 +31,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to="/all-Book"
-                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-white rounded group"
+                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all rounded group"
                     >
                         <span className="w-36 h-36 rounded rotate-[-40deg] bg-green-500 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-7 ml-7 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-24 group-hover:translate-x-0"></span>
                         <span className="relative text-black transition-colors duration-300 group-hover:text-white">
@@ -43,7 +43,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to="/about-us"
-                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-white rounded group"
+                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all rounded group"
                     >
                         <span className="w-36 h-36 rounded rotate-[-40deg] bg-green-500 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-7 ml-7 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-24 group-hover:translate-x-0"></span>
                         <span className="relative text-black transition-colors duration-300 group-hover:text-white">
@@ -54,7 +54,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         to="/coverage"
-                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-white rounded group"
+                        className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all rounded group"
                     >
                         <span className="w-36 h-36 rounded rotate-[-40deg] bg-green-500 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-7 ml-7 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-24 group-hover:translate-x-0"></span>
 
@@ -70,7 +70,7 @@ const Navbar = () => {
                         <li>
                             <NavLink
                                 to="/dashboard/my-orders"
-                                className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-white rounded group"
+                                className="relative inline-flex items-center justify-start px-4 py-2 overflow-hidden font-medium transition-all rounded group"
                             >
                                 <span className="w-36 h-36 rounded rotate-[-40deg] bg-red-500 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-7 ml-7 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-24 group-hover:translate-x-0"></span>
 
@@ -93,7 +93,7 @@ const Navbar = () => {
         ;
 
     return (
-        <div className="navbar shadow-sm px-4 bg-indigo-400">
+        <div className="navbar shadow-sm px-4 bg-gray-300">
 
             {/* Left Section */}
             <div className="navbar-start">
@@ -148,14 +148,26 @@ const Navbar = () => {
                         {/* Logout */}
                         <button
                             onClick={handleLogOut}
-                            className="btn bg-red-400 btn-sm text-white">
-                            Log Out
+                            className="relative inline-flex items-center justify-center px-4 py-2 btn-sm overflow-hidden font-medium transition-all bg-red-400 rounded-lg shadow text-white group hover:bg-red-500 hover:shadow-lg"
+                        >
+                            <span className="w-24 h-24 rounded rotate-[-40deg] bg-red-600 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-4 ml-4 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-16 group-hover:translate-x-0"></span>
+                            <span className="relative text-white transition-colors duration-300 text-sm">
+                                Log Out
+                            </span>
                         </button>
+
                     </div>
                 ) : (
-                    <Link className="btn bg-amber-400 btn-sm" to="/login">
-                        Login
+                    <Link
+                        to="/login"
+                        className="relative inline-flex items-center justify-center px-4 py-2 btn-sm overflow-hidden font-medium transition-all bg-amber-400 rounded-lg shadow text-black group hover:bg-amber-500 hover:shadow-lg"
+                    >
+                        <span className="w-24 h-24 rounded rotate-[-40deg] bg-amber-600 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-4 ml-4 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-16 group-hover:translate-x-0"></span>
+                        <span className="relative transition-colors duration-300 text-sm">
+                            Login
+                        </span>
                     </Link>
+
                 )}
             </div>
         </div>

@@ -60,7 +60,7 @@ const ManageBooks = () => {
     return (
         <div className="p-6">
             <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold">Manage Books</h2>
+                <h2 className="text-2xl text-green-400 font-bold">Manage Books</h2>
                 <button 
                     className="btn btn-primary"
                     onClick={() => setAddBookOpen(true)}

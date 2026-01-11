@@ -77,7 +77,7 @@ const AllUsers = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">All Users</h2>
+      <h2 className="text-2xl font-bold text-green-300 text-center mb-4">All Users</h2>
       <table className="table w-full">
         <thead>
           <tr>
