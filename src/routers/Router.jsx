@@ -16,7 +16,7 @@ import AddBook from "../pages/AllBook/AddBook";
 import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 import SendBook from "../pages/SendBook/SendBook";
 import Payment from "../pages/Dashboard/Payment/Payment";
-import PaymentSuccess from "../pages/Dashboard/Payment/paymentSuccess";
+import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers";

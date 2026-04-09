@@ -4,6 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import book1 from "../../../assets/book-1.avif";
 import book2 from "../../../assets/book-8.webp";
 import book3 from "../../../assets/book-3.webp";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
@@ -46,9 +47,10 @@ const Banner = () => {
             <p className="text-lg mb-6">
               Order books online and receive them quickly and safely.
             </p>
-            <button className="btn btn-secondary">
+            <Link to="send-book" className="btn btn-secondary">
               Order Now
-            </button>
+            </Link>
+
           </div>
         </div>
       </div>
@@ -65,9 +67,9 @@ const Banner = () => {
             <p className="text-lg mb-6">
               Read more, learn more, grow more with our book service.
             </p>
-            <button className="btn btn-accent">
+            <Link to="/allBook" className="btn btn-accent">
               Get Started
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -76,3 +78,4 @@ const Banner = () => {
 };
 
 export default Banner;
+

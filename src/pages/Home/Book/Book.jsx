@@ -18,7 +18,6 @@ const Book = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // stagger animation
             setTimeout(() => setVisible([true, false, false]), 100);
             setTimeout(() => setVisible([true, true, false]), 300);
             setTimeout(() => setVisible([true, true, true]), 500);
@@ -37,21 +36,24 @@ const Book = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="space-y-8 mt-10">
+    <div ref={sectionRef} className="space-y-10 mt-10 px-4">
       {cards.map((card, index) => (
         <div
           key={index}
-          className={`flex items-center gap-8 p-6 rounded-xl shadow-md bg-gray-300 transform transition-all duration-700
-            ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"} 
+          className={`flex flex-col md:flex-row items-center gap-6 md:gap-8 p-4 md:p-6 rounded-xl shadow-md bg-gray-300 transform transition-all duration-700
+            ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} 
             ${visible[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
           `}
         >
           <img
-            className="w-[280px] h-[200px] object-cover rounded-xl shadow-sm"
+            className="w-full md:w-[280px] h-[200px] object-cover rounded-xl shadow-sm"
             src={card.image}
             alt=""
           />
-          <p className="text-black leading-relaxed text-lg">{card.text}</p>
+
+          <p className="text-black leading-relaxed text-sm md:text-lg text-center md:text-left">
+            {card.text}
+          </p>
         </div>
       ))}
     </div>

@@ -104,16 +104,3 @@ export default SendBook;
 
 
 
-{/* Receiver Info
-                <input type="text" {...register('receiverName')} placeholder="Receiver Name" className="input w-full" />
-                <input type="text" {...register('receiverEmail')} placeholder="Receiver Email" className="input w-full" />
-
-                <select {...register('receiverRegion')} className="select w-full">
-                    <option disabled>Pick Receiver Region</option>
-                    {regions.map((r, i) => <option key={i} value={r}>{r}</option>)}
-                </select>
-
-                <select {...register('receiverDistrict')} className="select w-full">
-                    <option disabled>Pick Receiver District</option>
-                    {districtsByRegion(receiverRegion).map((d, i) => <option key={i} value={d}>{d}</option>)}
-                </select> */}
