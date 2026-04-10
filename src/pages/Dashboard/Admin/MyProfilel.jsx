@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Swal from 'sweetalert2';
 
 const MyProfilel = () => {
@@ -10,31 +10,88 @@ const MyProfilel = () => {
         photo: "https://i.ibb.co/7gFQy5p/user.png"
     });
 
-    const handleUpdate = (e) => {
+    const fileRef = useRef();
+
+    // 👉 click on profile pic
+    const handleImageClick = () => {
+        fileRef.current.click();
+    };
+
+    // 👉 image select + preview
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const url = URL.createObjectURL(file);
+            setUser({ ...user, photo: url });
+        }
+    };
+
+    // 👉 update profile (DB save)
+    const handleUpdate = async (e) => {
         e.preventDefault();
 
+        try {
+            const res = await fetch(`http://localhost:3000/users/${user.email}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: user.name,
+                    photo: user.photo
+                })
+            });
 
+            const data = await res.json();
 
-        Swal.fire(
-            "Updated!",
-            "Profile successfully updated.",
-            "success"
-        );
+            if (data.modifiedCount > 0) {
+                Swal.fire("Updated!", "Profile successfully updated.", "success");
+            } else {
+                Swal.fire("Error", "No changes detected", "info");
+            }
+
+        } catch (error) {
+            console.log(error);
+            Swal.fire("Error", "Something went wrong", "error");
+        }
     };
 
     return (
         <div className="max-w-xl mx-auto p-6 bg-base-100 shadow rounded">
             <h2 className="text-2xl text-center font-bold mb-6">My Profile</h2>
 
+            {/* Profile Image */}
             <div className="flex flex-col items-center mb-6">
-                <img
-                    src={user.photo}
-                    alt="profile"
-                    className="w-24 h-24 rounded-full mb-2"
+
+                <div
+                    className="relative cursor-pointer"
+                    onClick={handleImageClick}
+                >
+                    <img
+                        src={user.photo}
+                        alt="profile"
+                        className="w-24 h-24 rounded-full object-cover border"
+                    />
+
+                    {/* Hover Effect */}
+                    <div className="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 hover:opacity-100 transition">
+                        <span className="text-white text-xs">Change</span>
+                    </div>
+                </div>
+
+                {/* Hidden Input */}
+                <input
+                    type="file"
+                    accept="image/*"
+                    ref={fileRef}
+                    onChange={handleImageChange}
+                    className="hidden"
                 />
-                <p className="font-semibold">{user.role}</p>
+
+                <p className="font-semibold mt-2">{user.role}</p>
             </div>
 
+            {/* Form */}
             <form onSubmit={handleUpdate} className="space-y-4">
 
                 <div>
@@ -66,11 +123,8 @@ const MyProfilel = () => {
                     />
                 </div>
 
-                <button className="relative inline-flex items-center justify-center w-full px-4 py-2 overflow-hidden font-medium transition-all bg-indigo-600 rounded-lg shadow text-white group hover:shadow-lg">
-                    <span className="w-28 h-28 rounded rotate-[-40deg] bg-indigo-800 absolute bottom-0 left-0 -translate-x-full translate-y-full mb-6 ml-6 ease-out duration-500 transition-all group-hover:ml-0 group-hover:mb-20 group-hover:translate-x-0"></span>
-                    <span className="relative text-white transition-colors duration-300 text-sm">
-                        Update Profile
-                    </span>
+                <button className="btn btn-primary w-full">
+                    Update Profile
                 </button>
 
             </form>

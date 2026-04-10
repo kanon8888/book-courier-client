@@ -13,13 +13,63 @@ const Navbar = () => {
 
     const links = (
         <>
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/all-Book">All Book</NavLink></li>
-            <li><NavLink to="/about-us">About Us</NavLink></li>
-            <li><NavLink to="/coverage">Coverage</NavLink></li>
+            <li>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        `text-2xl transition duration-300 ${isActive
+                            ? "text-green-600 font-bold"
+                            : "hover:text-green-500"
+                        }`
+                    }
+                >
+                    Home
+                </NavLink>
+            </li>
 
+            <li>
+                <NavLink
+                    to="/all-Book"
+                    className={({ isActive }) =>
+                        `text-2xl transition duration-300 ${isActive
+                            ? "text-green-600 font-bold"
+                            : "hover:text-green-500"
+                        }`
+                    }
+                >
+                    All Book
+                </NavLink>
+            </li>
+
+            <li>
+                <NavLink
+                    to="/about-us"
+                    className={({ isActive }) =>
+                        `text-2xl transition duration-300 ${isActive
+                            ? "text-green-600 font-bold"
+                            : "hover:text-green-500"
+                        }`
+                    }
+                >
+                    About Us
+                </NavLink>
+            </li>
+
+            <li>
+                <NavLink
+                    to="/coverage"
+                    className={({ isActive }) =>
+                        `text-2xl transition duration-300 ${isActive
+                            ? "text-green-600 font-bold"
+                            : "hover:text-green-500"
+                        }`
+                    }
+                >
+                    Coverage
+                </NavLink>
+            </li>
             {user && (
-                <li><NavLink to="/dashboard/my-orders">Dashboard</NavLink></li>
+                <li><NavLink to="/dashboard/my-orders" className="text-2xl">Dashboard</NavLink></li>
             )}
         </>
     );

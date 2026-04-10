@@ -87,34 +87,7 @@ const DashboardLayout = () => {
                         )}
                     </li>
 
-                    {/* ADMIN DASHBOARD */}
-                    {role === "admin" && (
-                        <li>
-                            <button onClick={() => setAdminMenuOpen(!adminMenuOpen)}>
-                                Admin Dashboard {adminMenuOpen ? '▲' : '▼'}
-                            </button>
 
-                            {adminMenuOpen && (
-                                <ul className="ml-4">
-                                    <li>
-                                        <NavLink className="hover:text-fuchsia-400" to="/dashboard/admin/all-users">
-                                            <FaUserShield />
-                                            All Users</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink className="hover:text-fuchsia-400" to="/dashboard/admin/manage-books">
-                                            <FaBookSkull />
-                                            Manage Books</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink className="hover:text-fuchsia-400" to="/dashboard/admin/profile">
-                                            <ImProfile />
-                                            My Profile</NavLink>
-                                    </li>
-                                </ul>
-                            )}
-                        </li>
-                    )}
 
                     {/* LIBRARIAN DASHBOARD */}
                     <li>
@@ -146,6 +119,35 @@ const DashboardLayout = () => {
                             </ul>
                         )}
                     </li>
+
+                    {/* ADMIN DASHBOARD */}
+                    {role === "admin" && (
+                        <li>
+                            <button onClick={() => setAdminMenuOpen(!adminMenuOpen)} className='text-lg'>
+                                Admin Dashboard {adminMenuOpen ? '▲' : '▼'}
+                            </button>
+
+                            {adminMenuOpen && (
+                                <ul className="ml-4">
+                                    <li>
+                                        <NavLink className="hover:text-fuchsia-400" to="/dashboard/admin/all-users">
+                                            <FaUserShield />
+                                            All Users</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className="hover:text-fuchsia-400" to="/dashboard/admin/manage-books">
+                                            <FaBookSkull />
+                                            Manage Books</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className="hover:text-fuchsia-400" to="/dashboard/admin/profile">
+                                            <ImProfile />
+                                            My Profile</NavLink>
+                                    </li>
+                                </ul>
+                            )}
+                        </li>
+                    )}
 
                 </ul>
             </div>
