@@ -31,7 +31,7 @@ const MyBooks = () => {
     // success message
     alert("✅ Order Successful!");
   };
-
+  console.log(books)
   return (
     <div className="p-6 bg-pink-200">
       <h2 className="text-2xl font-bold mb-4 text-center text-primary">
@@ -43,6 +43,7 @@ const MyBooks = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {books.map((book) => (
+
             <div
               key={book.id}
               className="border rounded p-4 shadow-md bg-white"

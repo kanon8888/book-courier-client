@@ -4,6 +4,8 @@ import Book from '../Book/Book';
 import Icon from '../Icon/Icon';
 import LatestBooks from '../LatestBooks/LatestBooks';
 import AssociateOrgenization from '../AssociateOrgenization/AssociateOrgenization';
+import DeliverySection from '../DeliverySection/DeliverySection';
+import Features from '../Features/Features';
 
 const Home = () => {
     const [show, setShow] = useState(false);
@@ -30,14 +32,20 @@ const Home = () => {
                 <Banner />
                 <Icon />
             </div>
+            <div>
+                <DeliverySection></DeliverySection>
+            </div>
 
-            <div className='bg-blue-400'>
+            <div className=''>
                 <Book />
                 <LatestBooks />
             </div>
 
-            <div className='bg-blue-400'>
+            <div className=''>
                 <AssociateOrgenization />
+            </div>
+            <div>
+                <Features></Features>
             </div>
 
             {/* ⬆️ Scroll To Top Button */}

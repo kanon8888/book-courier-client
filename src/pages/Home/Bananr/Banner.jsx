@@ -47,7 +47,7 @@ const Banner = () => {
             <p className="text-lg mb-6">
               Order books online and receive them quickly and safely.
             </p>
-            <Link to="send-book" className="btn btn-secondary">
+            <Link className="btn btn-secondary">
               Order Now
             </Link>
 
@@ -67,7 +67,7 @@ const Banner = () => {
             <p className="text-lg mb-6">
               Read more, learn more, grow more with our book service.
             </p>
-            <Link to="/allBook" className="btn btn-accent">
+            <Link className="btn btn-accent">
               Get Started
             </Link>
           </div>
