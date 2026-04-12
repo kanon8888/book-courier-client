@@ -91,8 +91,8 @@ Book Courier is a full-stack web application where users can browse books, place
 
 ### 🧑‍🏫 Admin
 
-* Email: [admin@gmail.com](mailto:admin@gmail.com)
-* Password: 123456
+* Email: [rhkkanon@gmail.com]
+* Password: 12345!Asdf
 
 ---
 
