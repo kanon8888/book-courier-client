@@ -1,10 +1,6 @@
 # 📚 Book Courier – Full Stack Project
 
-## 🔗 Live Website
 
-👉 https://your-client-live-site-url.com
-
----
 
 ## 💻 GitHub Repository
 
