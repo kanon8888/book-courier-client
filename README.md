@@ -1,56 +1,128 @@
-# 📚 Book Courier – Client Side
+# 📚 Book Courier – Full Stack Project
 
 ## 🔗 Live Website
-https://your-client-live-site-url.com  
-*(Replace with your Netlify / Vercel live URL)*
+
+👉 https://your-client-live-site-url.com
+
+---
+
+## 💻 GitHub Repository
+
+### 🌐 Client Side (Frontend)
+
+👉 https://github.com/kanon8888/book-courier-client
+
+### ⚙️ Server Side (Backend)
+
+👉 https://github.com/kanon8888/book-courier-server
 
 ---
 
 ## 🎯 Project Purpose
-Book Courier (Client Side) is a frontend web application where users can browse books, place orders, and manage their book-related activities. Librarians can view and manage orders through a clean and user-friendly interface.
+
+Book Courier is a full-stack web application where users can browse books, place delivery orders, and track their books. It also includes a role-based dashboard for users and admins (librarians) to manage orders efficiently.
 
 ---
 
 ## ✨ Key Features
 
 ### 👤 User Features
-- Home page with smooth scroll animations
-- Latest 6 books section
-- All books listing page
-- My Books page (localStorage based)
-- Order books easily
-- Orders page with order status
-- Cancel pending orders
 
-### 🧑‍🏫 Librarian Features (UI)
-- View all orders in a table
-- Update order status:
-  - Pending → Shipped → Delivered
-- Cancel pending orders
+* Browse all books
+* Add books for delivery
+* Track delivery status
+* View personal orders
+* Update profile
+
+### 🧑‍🏫 Admin / Librarian Features
+
+* Manage all users
+* Manage all books
+* Update delivery status (Pending → Shipped → Delivered)
+* View payments & reports
 
 ### 🎨 UI & UX
-- Fully responsive design
-- Built with Tailwind CSS and DaisyUI
-- SweetAlert2 for alerts and confirmations
-- Smooth navigation using React Router
+
+* Fully responsive (Mobile, Tablet, Desktop)
+* Modern UI with Tailwind CSS + DaisyUI
+* Smooth navigation using React Router
+* SweetAlert2 alerts & confirmations
 
 ---
 
 ## 🧰 Technologies Used
 
 ### Frontend
-- React
-- React Router DOM
-- Tailwind CSS
-- DaisyUI
-- SweetAlert2
+
+* React
+* React Router DOM
+* Tailwind CSS
+* DaisyUI
+* SweetAlert2
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Firebase Admin (Authentication)
+* Stripe (Payment Integration)
+
+---
+
+## 🔐 Authentication & Security
+
+* Firebase Authentication
+* JWT Token Verification
+* Protected Routes
+* Role-based access control
+
+---
+
+## 💳 Payment System
+
+* Stripe Checkout Integration
+* Secure payment flow
+* Payment history tracking
+
+---
+
+
+
+### 🧑‍🏫 Admin
+
+* Email: [admin@gmail.com](mailto:admin@gmail.com)
+* Password: 123456
 
 ---
 
 ## 📦 NPM Packages Used
-```bash
+
+```bash id="o1u2q5"
 react
 react-router-dom
 sweetalert2
 tailwindcss
 daisyui
+express
+mongodb
+cors
+dotenv
+firebase-admin
+stripe
+```
+
+---
+
+## 🚀 Deployment
+
+* Frontend: Vercel / Netlify
+* Backend: Render / Railway
+
+---
+
+## 📌 Notes
+
+* Replace live URL with your real deployed site
+* Keep environment variables secure
+* Do not expose API keys in public repository
