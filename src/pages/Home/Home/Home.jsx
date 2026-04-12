@@ -27,9 +27,11 @@ const Home = () => {
     };
 
     return (
-        <div className='mt-10 relative'>
-            <div className='bg-amber-400'>
+        <div className="mt-10 relative max-w-7xl mx-auto px-6">
+            <div className="">
                 <Banner />
+            </div>
+            <div className='mt-6'>
                 <Icon />
             </div>
             <div>
